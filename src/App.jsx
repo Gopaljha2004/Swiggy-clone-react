@@ -1,17 +1,25 @@
 import './App.css'
-import FoodOptions from './components/core/FoodOptions'
-import Grocerys from './components/core/Grocerys'
-import Header from './components/core/Header'
+import Footer from './components/core/Footer'
+import {Routes , Route} from "react-router"
+import Restaurents from './pages/Restaurants'
+import Instamart from './pages/Instamart'
+import Dineout from './pages/Dineout'
+import Genie from './pages/Genie'
+import Home from './pages/Home'
 
 
 function App() {
- 
 
   return (
-    <>
-     <Header/>
-         <FoodOptions/>
-         <Grocerys/>
+    <> 
+         <Routes>
+          <Route path='/' element={<Home/>} />
+          <Route path='/restaurants' element={<Restaurents/>}  /> 
+          <Route path='/instamart' element={<Instamart/>} />
+          <Route path='/dineout' element={<Dineout/>}/>
+          <Route path='/genie' element={<Genie/>}/>
+         </Routes>
+         <Footer/>
     </>
   )
 }

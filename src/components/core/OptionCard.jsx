@@ -3,7 +3,7 @@ import React from "react";
 
 const OptionCard = ({ options }) => {
   return (
-    <motion.div whileHover={{ scale: 1.1 }} className="p-2">
+    <motion.div whileHover={{ scale: 1.1 }} className="p-2 shrink-0">
       <a target="_blank" rel="noopener noreferrer" href={options?.action?.link}>
         <img
           className="w-36 h-44 object-cover rounded-lg"
