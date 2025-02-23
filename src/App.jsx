@@ -6,6 +6,7 @@ import Instamart from './pages/Instamart'
 import Dineout from './pages/Dineout'
 import Genie from './pages/Genie'
 import Home from './pages/Home'
+import RestMenu from './components/core/RestMenu'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/instamart' element={<Instamart/>} />
           <Route path='/dineout' element={<Dineout/>}/>
           <Route path='/genie' element={<Genie/>}/>
+          <Route path='/city/hyderabad/:id' element={<RestMenu/>} />
          </Routes>
          <Footer/>
     </>

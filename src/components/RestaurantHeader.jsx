@@ -13,7 +13,8 @@ const RestaurantHeader = () => {
   return (
     <div className="h-10 max-w-[80%] mt-5 container mx-auto shadow-2xl">
       <header className="flex items-center justify-between ">
-        <h1>Siwggy Logo</h1>
+       <Link to="/">
+       <h1>Siwggy Logo</h1></Link> 
         <input type="text" placeholder="others" />
 
         <div className="flex gap-10">
