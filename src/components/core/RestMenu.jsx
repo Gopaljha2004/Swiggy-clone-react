@@ -1,35 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import MenuCard from "./MenuCard";
 
 const RestMenu = () => {
   const { id } = useParams();
-  console.log(id);
+  console.log("Restaurant ID:", id);
 
-  const [MenuData, setMenuData] = useState([]);
+  const [menuData, setMenuData] = useState([]);
 
   async function fetchData() {
     try {
       const proxyServer = "https://cors-anywhere.herokuapp.com/";
-      const swiggyApi =
-        "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=17.5641438&lng=78.4376862&carousel=true&third_party_vendor=1";
-      const response = await fetch(
-        `https://cors-anywhere.herokuapp.com/https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.5641438&lng=78.4376862&restaurantId=${id}&submitAction=ENTER`
-      );
+      const swiggyApi = `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId=${id}`;
+
+      const response = await fetch(proxyServer + swiggyApi);
       const data = await response.json();
-      setMenuData(data);
+
+      console.log("API Response:", data); // Log full response structure
+
+      const menuItems =
+        data?.data?.cards?.find((card) => card?.groupedCard)?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
+      const filterData = menuItems.filter((items) => "title" in items?.card?.card)
+
+      setMenuData(filterData);
     } catch (e) {
-      console.log("error", e?.messssage);
+      console.error("Error fetching data:", e.message);
     }
   }
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [id]); // Run effect when id changes
+
+  if (menuData.length === 0) return <h1>Data not received</h1>;
+
+  console.log("menu data" , menuData)
 
   return (
     <div>
-      Hello
-      {id}
+      <div className="w-[90%] mx-auto mt-20">
+        {
+          menuData.map((menu) =>{
+            return (
+              <>
+              <MenuCard key={menu?.card?.card?.title} menuInfo={menu?.card?.card}/>
+              </>
+            )
+          })
+        }
+      </div>
     </div>
   );
 };
