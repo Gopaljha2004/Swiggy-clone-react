@@ -1,5 +1,4 @@
 import React from "react";
-import RestaurantHeader from "../components/RestaurantHeader";
 import fetchRestaurants from "../hooks/fetchRestaurants";
 import fetchFoods from "../hooks/fetchFoods";
 import RestFoodItem from "../components/core/RestFoodItem";
@@ -19,7 +18,6 @@ const Restaurents = () => {
 
   return (
     <div>
-      <RestaurantHeader />
       {/* section */}
       <div className="w-[90%] mx-auto container mt-20">
         <h3 className="text-2xl ml-4 font-semibold ">What's on your mind?</h3>

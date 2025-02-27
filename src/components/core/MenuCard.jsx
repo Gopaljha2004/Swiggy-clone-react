@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import MenuItems from "./MenuItems";
 import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
@@ -6,6 +6,8 @@ import { IoIosArrowDown } from "react-icons/io";
 const MenuCard = ({ menuInfo, foodSelected }) => {
   console.log(menuInfo);
   const [isOpen, setIsOpen] = useState(true);
+
+
 
   if ("categories" in menuInfo) {
     return (
