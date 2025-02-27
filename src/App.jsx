@@ -7,6 +7,7 @@ import Dineout from './pages/Dineout'
 import Genie from './pages/Genie'
 import Home from './pages/Home'
 import RestMenu from './components/core/RestMenu'
+import SearchFood  from './components/core/SearchFood'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/dineout' element={<Dineout/>}/>
           <Route path='/genie' element={<Genie/>}/>
           <Route path='/city/hyderabad/:id' element={<RestMenu/>} />
+          <Route path='city/hyderabad/:id/search' element={<SearchFood/>}/>
          </Routes>
          <Footer/>
     </>
